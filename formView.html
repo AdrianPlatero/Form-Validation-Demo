@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--im adding ng-app at the top because, not only is instantiate this whole program to be a Angular project, but its allowing the html tags within to be manipulated-->
+<html ng-app="ngApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+
+<!--Implementing angularJS into this Html file-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="formView.css">-->
+<link rel="stylesheet" href="../CSS/formView.css">
+
+
+
+<body>
+    <div ng-controller="MyCntrl">
+        <form name="myForm">
+            <fieldset name="myFldSt">
+                <legend><h2>legend</h2></legend>
+
+                <!--First Name-->
+                <input name="fName" type="text" placeholder="First Name" ng-model="fName" ng-pattern="/^[a-zA-Z\s]+$/" required>
+                <!--ng validations-->
+                <span ng-show="myForm.fName.$touched && myForm.fName.$invalid">*</span>
+                <span ng-show="myForm.fName.$dirty && myForm.fName.$invalid"> Invalid First Name</span>
+
+                <!--Last Name-->
+                <input name="lName" type="text" placeholder="Last Name" ng-model="lName" ng-pattern="/^[a-zA-Z\s]+$/" required>
+                <!--ng validations-->
+                <span ng-show="myForm.lName.$touched && myForm.lName.$invalid">*</span>
+                <span ng-show="myForm.lName.$dirty && myForm.lName.$invalid"> Invalid Last Name</span>
+
+                <!--Date of birth-->
+                <input name="DOB" placeholder="mm/dd/yyyy" ng-mode="DOB" required>
+
+                <!--Email-->
+                <input name="email" type="email" placeholder="Email" ng-model="email" required>
+                <!--ng validations-->
+                <span ng-show="myForm.email.$touched && myForm.email.$invalid"></span>
+                <span ng-show="myForm.email.$dirty && myForm.email.$invalid"> Invalid email</span>
+
+                <!--Phone-->
+                <input name="phone" type="tel" placeholder="Phone Number" ng-model="phone" ng-pattern="/^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/" required>
+                <!--ng validation-->
+                <span ng-show="myForm.phone.$touched && myForm.phone.$invalid">*</span>
+                <span ng-show="myForm.phone.$dirty && myForm.phone.$invalid"> Invalid Phone number</span>
+
+                <!--Salary-->
+                <input name="salary" type="number" placeholder="Salary" ng-model="salary" required>
+                <!--ng validation-->
+                <span ng-show="myForm.salary.$dirty && myForm.salary.$invalid"> Invalid salary</span>
+
+                <!--Status-->
+                <div ng-show="myForm.salary.$valid && !myForm.pending">
+                    <label>Status &nbsp; &nbsp;
+                        <select name="status" ng-model="status" placeholder="Status" required>
+                            <option value="contractor">Contractor</option>
+                            <option value="employee">Employee</option>
+                        </select>
+                        <span ng-show="myForm.status.$touchd && myForm.status.$invalid">*</span>
+                    </label><br><br>
+                </div>
+
+                <!--Gender-->
+                <label>Gender &nbsp;
+                    <select name="gender" ng-model="gender" placeholder="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Prefer not to Answer</option>
+                    </select>
+                    <span ng-show="myForm.gender.$touched && myForm.gender.$invalid">*</span>
+                </label><br><br>
+
+                <!--Submit-->
+                <button name="submit" type="submit" ng-model="submit">Submit</button>
+
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
